@@ -48,7 +48,7 @@ class Featurizer:
         """
         return ps.get_dummies(psdf, columns=cat_cols, dtype='int64')
 
-    def process_label(self, psdf: pyspark.pandas.DataFrame, rename_to: str = 'churn') -> pyspark.pandas.DataFrame:
+    def process_label(self, psdf: pyspark.pandas.DataFrame, rename_to: str = 'reordered') -> pyspark.pandas.DataFrame:
         """
         Convert label to int and rename label column
         TODO: add test
@@ -63,7 +63,7 @@ class Featurizer:
         -------
         pyspark.pandas.DataFrame
         """
-        psdf[self.cfg.label_col] = psdf[self.cfg.label_col].map({'Yes': 1, 'No': 0})
+        # psdf[self.cfg.label_col] = psdf[self.cfg.label_col].map({'Yes': 1, 'No': 0})
         psdf = psdf.astype({self.cfg.label_col: 'int32'})
         psdf = psdf.rename(columns={self.cfg.label_col: rename_to})
 
