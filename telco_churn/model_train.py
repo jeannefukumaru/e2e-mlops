@@ -11,10 +11,10 @@ from mlflow.models import infer_signature
 import databricks
 from databricks.feature_store import FeatureStoreClient, FeatureLookup
 
-from telco_churn.common import MLflowTrackingConfig, FeatureStoreTableConfig, LabelsTableConfig
-from telco_churn.model_train_pipeline import ModelTrainPipeline
-from telco_churn.utils.get_spark import spark
-from telco_churn.utils.logger_utils import get_logger
+from reorder.common import MLflowTrackingConfig, FeatureStoreTableConfig, LabelsTableConfig
+from reorder.model_train_pipeline import ModelTrainPipeline
+from reorder.utils.get_spark import spark
+from reorder.utils.logger_utils import get_logger
 
 fs = FeatureStoreClient()
 _logger = get_logger()

@@ -134,6 +134,6 @@ def dbutils_fixture() -> Iterator[None]:
     :return:
     """
     logging.info("Patching the DBUtils object")
-    with patch("telco_churn.common.get_dbutils", lambda _: DBUtilsFixture()):
+    with patch("reorder.common.get_dbutils", lambda _: DBUtilsFixture()):
         yield
     logging.info("Test session finished, patching completed")

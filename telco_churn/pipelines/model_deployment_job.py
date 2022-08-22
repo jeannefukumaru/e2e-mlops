@@ -1,6 +1,6 @@
-from telco_churn.common import Workload, MLflowTrackingConfig
-from telco_churn.model_deployment import ModelDeployment, ModelDeploymentConfig
-from telco_churn.utils.logger_utils import get_logger
+from reorder.common import Workload, MLflowTrackingConfig
+from reorder.model_deployment import ModelDeployment, ModelDeploymentConfig
+from reorder.utils.logger_utils import get_logger
 
 _logger = get_logger()
 

@@ -1,8 +1,8 @@
 from setuptools import find_packages, setup
-from telco_churn import __version__
+from reorder import __version__
 
 setup(
-    name='telco_churn',
+    name='reorder',
     packages=find_packages(exclude=['tests', 'tests.*']),
     setup_requires=['wheel'],
     version=__version__,

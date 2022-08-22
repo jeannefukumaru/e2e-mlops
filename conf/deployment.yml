@@ -35,14 +35,14 @@ environments:
       - name: 'DEV-telco-churn-demo-setup'
         <<: *dev-cluster-config
         spark_python_task:
-          python_file: 'file://telco_churn/pipelines/demo_setup_job.py'
+          python_file: 'file://reorder/pipelines/demo_setup_job.py'
           parameters: ['--base-data-params', 'file:fuse://conf/.base_data_params.env',
                        '--env', 'file:fuse://conf/dev/.dev.env',
                        '--conf-file', 'file:fuse://conf/pipeline_configs/demo_setup.yml']
       - name: 'DEV-telco-churn-feature-table-creation'
         <<: *dev-cluster-config
         spark_python_task:
-          python_file: 'file://telco_churn/pipelines/feature_table_creator_job.py'
+          python_file: 'file://reorder/pipelines/feature_table_creator_job.py'
           parameters: ['--base-data-params', 'file:fuse://conf/.base_data_params.env',
                        '--env', 'file:fuse://conf/dev/.dev.env',
                        '--conf-file', 'file:fuse://conf/pipeline_configs/feature_table_creator.yml']
@@ -50,7 +50,7 @@ environments:
         <<:
           - *dev-cluster-config
         spark_python_task:
-          python_file: 'file://telco_churn/pipelines/model_train_job.py'
+          python_file: 'file://reorder/pipelines/model_train_job.py'
           parameters: ['--base-data-params', 'file:fuse://conf/.base_data_params.env',
                        '--env', 'file:fuse://conf/dev/.dev.env',
                        '--conf-file', 'file:fuse://conf/pipeline_configs/model_train.yml']
@@ -58,7 +58,7 @@ environments:
         <<:
           - *dev-cluster-config
         spark_python_task:
-          python_file: 'file://telco_churn/pipelines/model_deployment_job.py'
+          python_file: 'file://reorder/pipelines/model_deployment_job.py'
           parameters: ['--base-data-params', 'file:fuse://conf/.base_data_params.env',
                        '--env', 'file:fuse://conf/dev/.dev.env',
                        '--conf-file', 'file:fuse://conf/pipeline_configs/model_deployment.yml']
@@ -66,7 +66,7 @@ environments:
         <<:
           - *dev-cluster-config
         spark_python_task:
-          python_file: 'file://telco_churn/pipelines/model_inference_batch_job.py'
+          python_file: 'file://reorder/pipelines/model_inference_batch_job.py'
           parameters: ['--base-data-params', 'file:fuse://conf/.base_data_params.env',
                        '--env', 'file:fuse://conf/dev/.dev.env',
                        '--conf-file', 'file:fuse://conf/pipeline_configs/model_inference_batch.yml']
@@ -96,7 +96,7 @@ environments:
       - name: 'PROD-telco-churn-demo-setup'
         <<: *prod-cluster-config
         spark_python_task:
-          python_file: 'file://telco_churn/pipelines/demo_setup_job.py'
+          python_file: 'file://reorder/pipelines/demo_setup_job.py'
           parameters: ['--base-data-params', 'file:fuse://conf/.base_data_params.env',
                        '--env', 'file:fuse://conf/prod/.prod.env',
                        '--conf-file', 'file:fuse://conf/pipeline_configs/demo_setup.yml']
@@ -106,7 +106,7 @@ environments:
             <<:
               - *prod-cluster-config
             spark_python_task:
-              python_file: 'file://telco_churn/pipelines/demo_setup_job.py'
+              python_file: 'file://reorder/pipelines/demo_setup_job.py'
               parameters: ['--base-data-params', 'file:fuse://conf/.base_data_params.env',
                            '--env', 'file:fuse://conf/prod/.prod.env',
                            '--conf-file', 'file:fuse://conf/pipeline_configs/demo_setup.yml']
@@ -115,7 +115,7 @@ environments:
             depends_on:
               - task_key: 'demo-setup'
             spark_python_task:
-              python_file: 'file://telco_churn/pipelines/feature_table_creator_job.py'
+              python_file: 'file://reorder/pipelines/feature_table_creator_job.py'
               parameters: ['--base-data-params', 'file:fuse://conf/.base_data_params.env',
                            '--env', 'file:fuse://conf/prod/.prod.env',
                            '--conf-file', 'file:fuse://conf/pipeline_configs/feature_table_creator.yml']
@@ -125,7 +125,7 @@ environments:
               - task_key: 'demo-setup'
               - task_key: 'feature-table-creation'
             spark_python_task:
-              python_file: 'file://telco_churn/pipelines/model_train_job.py'
+              python_file: 'file://reorder/pipelines/model_train_job.py'
               parameters: ['--base-data-params', 'file:fuse://conf/.base_data_params.env',
                            '--env', 'file:fuse://conf/prod/.prod.env',
                            '--conf-file', 'file:fuse://conf/pipeline_configs/model_train.yml']
@@ -133,7 +133,7 @@ environments:
         <<:
           - *prod-cluster-config
         spark_python_task:
-          python_file: 'file://telco_churn/pipelines/model_train_job.py'
+          python_file: 'file://reorder/pipelines/model_train_job.py'
           parameters: ['--base-data-params', 'file:fuse://conf/.base_data_params.env',
                        '--env', 'file:fuse://conf/prod/.prod.env',
                        '--conf-file', 'file:fuse://conf/pipeline_configs/model_train.yml']
@@ -141,7 +141,7 @@ environments:
         <<:
           - *prod-cluster-config
         spark_python_task:
-          python_file: 'file://telco_churn/pipelines/model_deployment_job.py'
+          python_file: 'file://reorder/pipelines/model_deployment_job.py'
           parameters: ['--base-data-params', 'file:fuse://conf/.base_data_params.env',
                        '--env', 'file:fuse://conf/prod/.prod.env',
                        '--conf-file', 'file:fuse://conf/pipeline_configs/model_deployment.yml']
@@ -149,7 +149,7 @@ environments:
         <<:
           - *prod-cluster-config
         spark_python_task:
-          python_file: 'file://telco_churn/pipelines/model_inference_batch_job.py'
+          python_file: 'file://reorder/pipelines/model_inference_batch_job.py'
           parameters: ['--base-data-params', 'file:fuse://conf/.base_data_params.env',
                        '--env', 'file:fuse://conf/prod/.prod.env',
                        '--conf-file', 'file:fuse://conf/pipeline_configs/model_inference_batch.yml']

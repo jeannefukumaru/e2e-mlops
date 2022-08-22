@@ -3,7 +3,7 @@ from dataclasses import dataclass
 import pyspark
 import pyspark.pandas as ps
 
-from telco_churn.utils.logger_utils import get_logger
+from reorder.utils.logger_utils import get_logger
 
 _logger = get_logger()
 

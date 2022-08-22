@@ -1,7 +1,7 @@
-from telco_churn.common import Workload, FeatureStoreTableConfig, LabelsTableConfig
-from telco_churn.feature_table_creator import FeatureTableCreator, FeatureTableCreatorConfig
-from telco_churn.featurize import FeaturizerConfig
-from telco_churn.utils.logger_utils import get_logger
+from reorder.common import Workload, FeatureStoreTableConfig, LabelsTableConfig
+from reorder.feature_table_creator import FeatureTableCreator, FeatureTableCreatorConfig
+from reorder.featurize import FeaturizerConfig
+from reorder.utils.logger_utils import get_logger
 
 _logger = get_logger()
 

@@ -53,7 +53,7 @@ The following outlines the workflow to demo the repo.
     
     The following resources should not be present if starting from scratch: 
     - Feature table must be deleted
-        - The table e2e_mlops_testing.churn_features will be created when the feature-table-creation pipeline is triggered.
+        - The table e2e_mlops_testing.reorder_features will be created when the feature-table-creation pipeline is triggered.
     - MLflow experiment
         - MLflow Experiments during model training and model deployment will be used in both the dev and prod environments. 
           The paths to these experiments are configured in [conf/deployment.yml](https://github.com/niall-turbitt/e2e-mlops/blob/main/conf/deployment.yml).
@@ -66,7 +66,7 @@ The following outlines the workflow to demo the repo.
 
 ### Workflow
 
-1. **Run `PROD-telco-churn-initial-model-train-register` multitask job in prod environment**
+1. **Run `PROD-reorder-initial-model-train-register` multitask job in prod environment**
 
     - To demonstrate a CICD workflow, we want to start from a “steady state” where there is a current model in production. 
       As such, we will manually trigger a multitask job to do the following steps:
@@ -78,17 +78,17 @@ The following outlines the workflow to demo the repo.
 
     - Outlined below are the detailed steps to do this:
 
-        1. Run the multitask `PROD-telco-churn-initial-model-train-register` job via an automated job cluster in the prod environment
+        1. Run the multitask `PROD-reorder-initial-model-train-register` job via an automated job cluster in the prod environment
            (NOTE: multitask jobs can only be run via `dbx deploy; dbx launch` currently).
            ```
-           dbx deploy --jobs=PROD-telco-churn-initial-model-train-register --environment=prod --files-only
+           dbx deploy --jobs=PROD-reorder-initial-model-train-register --environment=prod --files-only
            dbx launch --job=PROD-telco-churn-initial-model-train-register --environment=prod --as-run-submit --trace
            ```
            See the Limitations section below regarding running multitask jobs. In order to reduce cluster start up time
            you may want to consider using a [Databricks pool](https://docs.databricks.com/clusters/instance-pools/index.html), 
            and specify this pool ID in [`conf/deployment.yml`](https://github.com/niall-turbitt/e2e-mlops/blob/main/conf/deployment.yml).
     - `PROD-telco-churn-initial-model-train-register` tasks:
-        1. Demo setup task steps ([`demo-setup`](https://github.com/niall-turbitt/e2e-mlops/blob/main/telco_churn/jobs/demo_setup_job.py))
+        1. Demo setup task steps ([`demo-setup`](https://github.com/niall-turbitt/e2e-mlops/blob/main/reorder/jobs/demo_setup_job.py))
             1. Delete Model Registry model if exists (archive any existing models).
             1. Delete MLflow experiment if exists.
             1. Delete Feature Table if exists.
@@ -262,8 +262,8 @@ To start working with your notebooks from [Repos](https://docs.databricks.com/re
 ```bash
 databricks repos create --url <your repo URL> --provider <your-provider>
 ```
-This command will create your personal repository under `/Repos/<username>/telco_churn`.
+This command will create your personal repository under `/Repos/<username>/reorder`.
 3. To set up the CI/CD pipeline with the notebook, create a separate `Staging` repo:
 ```bash
-databricks repos create --url <your repo URL> --provider <your-provider> --path /Repos/Staging/telco_churn
+databricks repos create --url <your repo URL> --provider <your-provider> --path /Repos/Staging/reorder
 ```

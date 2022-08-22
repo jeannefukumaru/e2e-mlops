@@ -2,12 +2,12 @@ from dataclasses import dataclass
 
 import pyspark.sql.dataframe
 
-from telco_churn import featurize
-from telco_churn.common import FeatureStoreTableConfig, LabelsTableConfig
-from telco_churn.featurize import FeaturizerConfig
-from telco_churn.utils import feature_store_utils
-from telco_churn.utils.get_spark import spark
-from telco_churn.utils.logger_utils import get_logger
+from reorder import featurize
+from reorder.common import FeatureStoreTableConfig, LabelsTableConfig
+from reorder.featurize import FeaturizerConfig
+from reorder.utils import feature_store_utils
+from reorder.utils.get_spark import spark
+from reorder.utils.logger_utils import get_logger
 
 _logger = get_logger()
 

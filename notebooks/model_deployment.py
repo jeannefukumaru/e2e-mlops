@@ -33,11 +33,11 @@ dbutils.widgets.dropdown('env', 'dev', ['dev', 'staging', 'prod'], 'Environment 
 # COMMAND ----------
 
 # DBTITLE 1,Module Imports
-from telco_churn.utils.notebook_utils import load_and_set_env_vars, load_config
+from reorder.utils.notebook_utils import load_and_set_env_vars, load_config
 
-from telco_churn.common import MLflowTrackingConfig
-from telco_churn.model_deployment import ModelDeployment, ModelDeploymentConfig
-from telco_churn.utils.logger_utils import get_logger
+from reorder.common import MLflowTrackingConfig
+from reorder.model_deployment import ModelDeployment, ModelDeploymentConfig
+from reorder.utils.logger_utils import get_logger
 
 _logger = get_logger()
 

@@ -1,4 +1,4 @@
-from telco_churn.common import Workload
+from reorder.common import Workload
 
 
 class SampleJob(Workload):
