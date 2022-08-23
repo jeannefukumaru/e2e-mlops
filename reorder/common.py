@@ -51,7 +51,7 @@ class FeatureStoreTableConfig:
             Name of feature table
         primary_keys (string or list)
             String or list of strings, of columns to use as the primary key(s). Use single column (customerID) as the
-            primary key for the telco churn example.
+            primary key for the customer reorder example.
         description (str)
             [Optional] string containing description to attribute to the feature table in the Feature Store.
             Only used when creating a Feature Store table.
@@ -73,7 +73,7 @@ class LabelsTableConfig:
         table_name (str)
             Name of labels table within the database
         label_col (str)
-            Name of column to use as the label column (in telco churn example we rename this column to 'churn')
+            Name of column to use as the label column (in customer reorder example we rename this column to 'reorder')
         primary_keys (string or list)
             [Optional] String or list of strings, of columns to use as the primary key(s)
         dbfs_path (str)
