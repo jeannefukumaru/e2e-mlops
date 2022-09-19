@@ -109,8 +109,8 @@ class FeatureTableCreator:
         self.setup(database_name=feature_store_table_cfg.database_name,
                    table_name=feature_store_table_cfg.table_name)
 
-        # Store only features for each customerID, storing customerID, churn in separate churn_labels table
-        # During model training we will use the churn_labels table to join features into
+        # Store only features for each pkey, storing pkey, reordered in separate reordered_labels table
+        # During model training we will use the reordered_labels table to join features into
         features_df = df.drop(self.cfg.labels_table_cfg.label_col)
         feature_table_name = f'{feature_store_table_cfg.database_name}.{feature_store_table_cfg.table_name}'
         _logger.info(f'Creating and writing features to feature table: {feature_table_name}')
@@ -148,7 +148,7 @@ class FeatureTableCreator:
         labels_dbfs_path = labels_table_cfg.dbfs_path
         # Create database if not exists, drop table if it already exists
         self.setup(database_name=labels_database_name, table_name=labels_table_name)
-        # DataFrame of customerID/churn labels
+        # DataFrame of pkey/reordered labels
         labels_df = df.select(labels_table_cols)
         _logger.info(f'Writing labels to DBFS: {labels_dbfs_path}')
         labels_df.write.format('delta').mode('overwrite').save(labels_dbfs_path)
